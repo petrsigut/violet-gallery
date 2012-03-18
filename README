@@ -19,20 +19,20 @@ FEATURES
 - Calendar (to show when photographer have time)
 - Guestbook
 - position of items in menu can be changed via drag&drop
-- usess Cufon (font replacement), JavaScript form validation (via Really easy
+- uses Cufon (font replacement), JavaScript form validation (via Really easy
   field validation)
 
 and
 
-dirty code, lots of hacks and various problems and temporaly solutions...:)
+dirty code, lots of hacks and various problems and temporary solutions...:)
 
 TODO
 ----
 - some free template to have decent default look
 - write tests
-- refactor
+- refactoring
 - port to Rails 3
-- photo blog feaure
+- photo blog feature
 
 USES
 ----
@@ -50,3 +50,22 @@ will_paginate (pagination of photos, comments and guestbook)
 
 INSTALLATION
 ------------
+- 'cp config/database.yml.example config/database.yml' and edit
+- 'rake db:setup' to setup database and fill it
+- script/server
+- localhost:3000 in your browser
+- if you want language switching you have to
+  setup some domain, for example app.loc, es.app.loc to point to your
+  127.0.0.1 in localhost
+- localhost:3000/admin - 'admin:admin'
+
+if something wrong or missing write me.
+
+LOOKING FOR COOPERATION
+-----------------------
+if you want help I gladly welcome your code, I want to learn writing tests,
+need free template, etc.
+
+LICENCE
+-------
+Plugins/Gems/photos etc their licence, my code under AGPL.
