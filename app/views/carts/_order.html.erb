@@ -1,0 +1,43 @@
+<%= form_tag ({:controller => 'emailer', :action => 'sendmail'}, :id => "form_buy") %>
+
+<p>
+  <% if flash[:error] -%>
+    <div id="errorExplanation"><%= flash[:error] %></div>
+  <% end -%>
+  <% if flash[:notice] -%>
+    <div id="noticeExplanation"><%= flash[:notice] %></div>
+  <% end -%>
+</p>
+<p>
+  <label for="email_sender"><strong>E-mail</strong></label>
+  <span id="advice-required-email_sender" class="form_advice" style="display:none">
+  <%= t(:please_fill_this_field) %></span><br/>
+
+  <span id="advice-validate-email-email_sender" class="form_advice" style="display:none">
+  <%= t(:please_fill_email) %></span>
+  <%= text_field 'email', 'sender', :class => "required validate-email" %>
+
+  <br/>
+    <label for="email_phone">Phone</label><br/>
+    <%= text_field 'email', 'phone' %>
+  </p>
+
+<p>
+<label for="email_message"><strong>Address/Question</strong></label>
+<span id="advice-required-email_message" class="form_advice" style="display:none">
+<%= t(:please_fill_this_field) %></span>
+
+<%= text_area 'email', 'message', :rows => 5, :class => "required" %>
+</p>
+
+<% if (@ordered_photos.count > 0) %>
+  <%= submit_tag t(:make_order) %>
+<% else %>
+  <%= submit_tag t(:make_order), :disabled => true %>
+<% end %>
+
+
+<script type="text/javascript">
+  new Validation('form_buy', {immediate:true});
+</script>
+

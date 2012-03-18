@@ -1,0 +1,7 @@
+page.insert_html :after, 'js_insert', :partial => 'guestbook'
+page["last_#{@guestbook.id}"].visual_effect :opacity, 
+  :duration => 1.8, :from => 0.3, :to => 1.0 
+#page["quote"].visual_effect :highlight, :startcolor => "#83b4c2",
+#  :endcolor => "#54737c", :duration => 3.0
+
+page["new_guestbook"].reset

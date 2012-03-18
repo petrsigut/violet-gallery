@@ -1,0 +1,21 @@
+<% unless (@photo.price.nil? || @photo.price.zero? || (Setting.get_setting("show_orders") == "false")) %>
+<li>
+<%# it is a button because of web spiders %>
+<%# http://blog.moertel.com/articles/2005/05/08/taking-the-unsafe-gets-out-of-rails %>
+<%= button_to_remote t(:buy),
+:url => {:controller => :ordered_photos,
+:action => :create, :id => @photo.id} %>
+<%= lowest_price(@photo) %>
+</li>
+
+<%# http://en.app.loc:3000/ordered_photos/create/2510 %>
+<%#= link_to "Profile", :controller => "ordered_photos", :action => "create", :id => @photo.id %>
+
+<% end %>
+
+
+<% if browser_is? :is_able_to_ajax %>
+  <%= show_photo_navigation(@back_section, true) %>
+<% else %>
+  <%= show_photo_navigation(@back_section) %>
+<% end %>

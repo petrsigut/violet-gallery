@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @guestbook.name %>
+</p>
+
+<p>
+  <b>Web:</b>
+  <%=h @guestbook.web %>
+</p>
+
+<p>
+  <b>Ip:</b>
+  <%=h @guestbook.ip %>
+</p>
+
+<p>
+  <b>Msg:</b>
+  <%=h @guestbook.msg %>
+</p>
+
+
+<%= link_to 'Edit', edit_guestbook_path(@guestbook) %> |
+<%= link_to 'Back', guestbooks_path %>

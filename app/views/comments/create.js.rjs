@@ -1,0 +1,14 @@
+if (@comment.approve == false)
+  page.insert_html :after, 'comments_h1', :partial => 'comment'
+  page["last_#{@comment.id}"].visual_effect :opacity, 
+    :duration => 1.8, :from => 0.3, :to => 1.0 
+#  page["gb_header"].visual_effect :highlight, :startcolor => "#83b4c2",
+#    :endcolor => "#54737c", :duration => 3.0
+else
+  page.insert_html :after, 'comments_h1',
+    :text => '<p class="notice">'+t(:will_show_after_approval)+'</p>'
+
+end
+
+
+page["new_comment"].reset

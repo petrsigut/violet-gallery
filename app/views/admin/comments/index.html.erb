@@ -1,0 +1,11 @@
+<%= render :partial => 'menu' %>
+
+<h1><%=t :comments %></h1>
+<%= will_paginate @comments, :inner_window => 8, :outer_window => 8 %>
+
+<% unless @comments.empty? %>
+  <%= render(:partial => "comment" , :collection => @comments) %>
+<% end %>
+
+<br clear="all">
+<%= will_paginate @comments, :inner_window => 8, :outer_window => 8 %>

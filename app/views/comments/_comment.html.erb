@@ -1,0 +1,9 @@
+<div id=<%= "last_#{comment.id}" %>>
+  <p class="quote">
+  <strong><%=h comment.name %></strong>
+  <span class="date"><%=t :before %> <%=h time_ago_in_words(comment.created_at) %></span>
+  <br/>
+      <%= nl2br(h(comment.msg)) %>
+  <br/>
+  </p>
+</div>

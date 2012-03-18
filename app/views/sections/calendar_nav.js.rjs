@@ -1,0 +1,5 @@
+page.replace_html 'calendar', :partial => 'calendar'
+page["calendar"].visual_effect :opacity, 
+  :duration => 0.1, :from => 0.3, :to => 1.0 
+
+

@@ -1,0 +1,9 @@
+log/*.log
+tmp/**/*
+doc/api
+doc/app
+.htpasswd
+*.swp
+public/ckeditor_assets/*
+config/deploy.rb
+config/database.yml

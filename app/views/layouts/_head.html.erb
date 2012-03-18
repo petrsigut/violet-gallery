@@ -1,0 +1,10 @@
+<!DOCTYPE html5>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title><%= @section.title %> | <%= Setting.get_setting("gallery_name") %></title>
+  <meta name="description" content="<%= Setting.get_setting("gallery_name")+" "+Setting.get_setting("meta_description") %>" />
+  <meta name="keywords" content="<%= Setting.get_setting("meta_keywords") %>" />
+  <%= auto_discovery_link_tag(:rss, :controller => :photos, :action => 'feed.rss') %>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+

@@ -1,0 +1,25 @@
+<% content_for :head do %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "validation" %>
+<% end %>
+
+<br clear="all">
+
+<div id="container">
+  <div id="column-1-big">
+    <h1 id="comments_listing_h1"><%= t(:guest_book_heading) %></h1>
+    <%= will_paginate @guestbooks, :inner_window => 2 %>
+<br clear="all">
+
+    <span id="js_insert"></span>
+    <%= render(:partial => "guestbook", :collection => @guestbooks, :as => :guestbook) %>
+    <%= will_paginate @guestbooks %>
+  </div>
+
+  <div id="column-2">
+    <%= render(:partial => "new") %>
+  </div>
+</div>
+
+<br />
+

@@ -1,0 +1,86 @@
+<%= render(:partial => 'layouts/head') %>
+
+<!-- stylesheets-->
+  <%= stylesheet_link_tag 'common' %>
+  <% if Setting.get_setting("side_menu_position") == "top" %>
+    <%= stylesheet_link_tag 'menu_top' %>
+  <% elsif (Setting.get_setting("side_menu_position") == "left" and @section.show_menu == true) %>
+    <%= stylesheet_link_tag 'menu_left' %>
+  <% end %>
+
+<!-- superfish -->
+<%= javascript_include_tag "jquery-1.4.2" %>
+<%= stylesheet_link_tag 'superfish' %>
+<%= javascript_include_tag "hoverIntent" %>
+<%= javascript_include_tag "superfish" %>
+
+<%= yield :head %>
+
+<script type="text/javascript"> 
+ 	jQuery(document).ready(function(){ 
+        jQuery('ul.sf-menu').superfish(); 
+        });
+</script>
+
+</head>
+<body>
+<% if Setting.get_setting("show_lang") == "true" %>
+  <div id="lang">
+    <p>
+    <ul>
+      <li class="lang"><%=  link_to "en",
+                "http://"+@mydomain_without_www+request.request_uri %></li>
+      <li class="lang"><%=  link_to "es",
+                "http://es."+@mydomain_without_www+request.request_uri %></li>
+      <li class="lang"><%=  link_to "cz",
+                "http://cs."+@mydomain_without_www+request.request_uri %></li>
+              </ul>
+              </p>
+  </div>
+<% end %>
+
+
+<div id="logo">
+    <h1>
+  <%= @section.subtitle || "<span>"+Setting.get_setting("gallery_name")+"</span>"
+  +t(:foto_portfolio) rescue "<span>"+Setting.get_setting("gallery_name")+"</span>"+t(:foto_portfolio) %>
+  </h1>
+</div>
+
+<div id="menu">
+  <ul id="nav" class="sf-menu">
+    <%= render :partial => 'sections/section_main_menu',
+               :collection => Section.find_by_hardcoded('main_menu').children, :as => :section -%>
+  </ul>
+  <br clear="all">
+</div>
+
+<div id="photos">
+  <%= yield  %> <!-- photos -->
+</div>
+
+<div>
+  <%= yield :paginate %>
+</div>
+
+<br clear="all">
+<div>
+  <%= yield :footer  %>
+  </div>
+<br clear="all">
+
+  <div id="footer">
+            <%= render(:partial => 'layouts/copy') %>
+          <a href="/"><%=t :home %></a>
+          <%= @counter.count %> <%=t :visitors_since %> <%= @counter.created_at.strftime("%d/%m/%Y") %>
+</div>
+</p>
+<!-- cufon -->
+<%= javascript_include_tag "cufon-yui" %>
+<%= javascript_include_tag "Ubuntu_400.font.js" %>
+<script type="text/javascript">
+	Cufon.replace('h1, h2, #logo');
+</script>
+
+</body>
+</html>

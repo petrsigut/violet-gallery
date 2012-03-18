@@ -1,0 +1,15 @@
+<h1>Nová událost</h1>
+
+<% form_for [:admin, @event] do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :date, "Datum" %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p>
+    <%= f.submit 'Vytvořit' %>
+  </p>
+<% end %>
+
+<%= link_to 'Zpět', events_path %>

@@ -1,0 +1,2 @@
+page.replace_html("total_price", :partial => "total_price", :object => @total_price)
+page["total_price"].visual_effect :highlight, :duration => 1

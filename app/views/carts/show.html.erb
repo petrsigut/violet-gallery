@@ -1,0 +1,41 @@
+<% content_for :head do %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "validation" %>
+<% end %>
+
+
+<br clear="all">
+
+<div id="column-1">
+  <h1>Photography</h1>
+  <% if (@ordered_photos.count > 0) %>
+    <% for ordered_photo in @ordered_photos %>
+      <% photo = ordered_photo.photo %>
+      <%# it should never happen has_many :ordered_photos, :dependent => :destroy %>
+      <% if photo.nil? %>
+        <%=t :photo_deleted %>        
+      <% else %>
+        <%= photo_thumb(photo,section_photo_path(photo.section, photo)) %>
+        <br/>
+        <% @print_sizes = PrintSize.all.map do
+          |p| [p.size+" $"+((p.price+photo.price).to_s)+"", p.id ] end %>
+        <%= select_size_tag(@print_sizes, ordered_photo) %>
+        <%= button_to t(:remove_from_basket), [ordered_photo], :confirm => t(:are_you_sure), :method => :delete %>
+        <br clear="all">
+      <% end %>
+    <% end %>
+    <div id="total_price">
+      <%= render :partial => "total_price" %>
+    </div>
+    <%#= button_to t(:delete_all), {:controller => :ordered_photos, :action => :destroy_all}, :confirm => t(:are_you_sure), :method => :post %>
+  <% end %>
+</div>
+<div id="column-2">
+  <h1>Order (non-binding), questions</h1>
+  <%= render(:partial => "order") %>
+</div>
+
+<div id="column-3">
+  <h1>Fine-art print</h1>
+  <%= render(:partial => "howto") %>
+</div>

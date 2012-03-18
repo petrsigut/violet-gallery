@@ -1,0 +1,33 @@
+  <div id="photo_social">
+    <p>
+      <%= image_tag "people.gif", :title => t(:views) %>
+      <%= @photo.view %>
+    <% if @photo.longitude != nil and @photo.latitude != nil %>
+      <a href="#" onClick="show_map();"><%= image_tag("map.png") %></a>
+    <% end %>
+  <% unless (@photo.author.nil?) %>
+    <%=t :author %>: <%= @photo.author.name %>
+  <% end %>
+
+  <% if (Setting.get_setting("show_exif") == "true") %>
+    <% photo_path = "#{PHOTO_STORAGE_PATH}/#{@photo.id}.jpg" %>
+    <% image = MiniMagick::Image.open(photo_path)  %>
+    <% @exif = image["exif:Model"]+"<br>ISO " %>
+    <% @exif += image["exif:ISOSpeedRatings"]+"<br> expozice " %>
+    <% @exif += image["exif:ExposureTime"] %>
+
+    <%= image_tag "exif.gif", :class => "help", :title => @exif %>
+
+   <script type="text/javascript" charset="utf-8">
+     $$(".help").each( function(link) {
+       new Tooltip(link, {mouseFollow: true, opacity: 0.95});
+     });
+   </script>
+ <% end %>
+  
+ <% if (Setting.get_setting("social_facebook") == "true") %>
+ <% end %>
+
+    </p>
+  </div>
+

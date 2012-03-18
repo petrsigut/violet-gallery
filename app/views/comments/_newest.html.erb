@@ -1,0 +1,6 @@
+  <%  photo = Photo.find(comment.photo_id, :include => :section) %>
+  <%= photo_thumb(photo,photo_path(photo, :query => "_comment")) %>
+  <br clear="all">
+  <div style="padding-left:12px;">
+  <strong><%=h comment.name %></strong>
+  <%=h truncate(comment.msg, :length => 15, :omission => "...") %>

@@ -1,0 +1,25 @@
+<h1>Violet Gallery</h1>
+<p>
+<%=t :welcome_violet_admin %>
+</p>
+
+<p>
+<%=t :last_login %>
+<%= @user.last_login_at %>
+</p>
+
+<% if (Photo.first.nil?) %>
+  <%= link_to t(:add_first_photo), admin_photos_path %>
+<% else %>
+  <p>
+  <%=t :last_photo_added_at %>
+  <%= time_ago_in_words(Photo.first(:order => 'created_at DESC').created_at) %>
+  </p>
+<% end %>
+
+<p>
+<%=t :after_work_logout %>
+<% link_to logout_path do %>
+  <%= image_tag 'admin/logout.png' %>
+<% end %>
+</p>

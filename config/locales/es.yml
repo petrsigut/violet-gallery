@@ -1,0 +1,372 @@
+es:
+  home: "HOME"
+  foto_portfolio: " - portafolio fotográfico"
+  next: "siguiente &raquo;"
+  previous: "&laquo; anterior"
+  
+  back_to_thumbs: "atrás"
+  back_to_comments: "atrás a comentarios"
+  back_to_photo: "atrás a fotografía"
+  
+  comments: "Comentarios"
+  author: "autor"
+  newest: "Los más nuevos"
+  comment: "Comentario"
+  new_comment: "Comentario nuevo"
+  show_all_comments: "Mostrar todos &raquo;"
+  photogallery: "Fotografías"
+  calendar_beskids: "CALENDARIO<br/>BESKYDY"
+  book_beskids: "LIBRO<br/>BESKYDY"
+  contact: "CONTACTO"
+  services: "SERVICES"
+  guest_book: "GUEST<br/>BOOK"
+  guest_book_heading: "Guest Book"
+  your_gallery: "SU GALERÍA"
+  all_photos: "Todas fotografías"
+  add_message: "Someter mensaje"
+  buy: "Comprar"
+  back_to_top: "back to top"
+
+  name: "Nombre"
+  message: "Mensaje"
+  send_message: "Enviar mensaje"
+  send_comment: "Enviar comentario"
+  before: "antes"
+  visitors_since: "visitors since "
+
+  current: "presente"
+  
+  news_and_updates: "<strong>Actualidades &amp;</strong> actualizaciónes"
+  do_you_like_my_photos: "<strong>¿Queréis</strong> fotografías mías?"
+  contact_me_anytime: "Contacte me cuando quiera"
+  i_can_cooperate_on_your_projects: "Puedo colaborar en sus proyectos"
+
+  please_fill_this_field: "- rellena por favor"
+  spam_no_ajax: "Cambiar a <i>no</i> spam-field, por favor"
+  please_change_to_no: "Cambia a <i>no</i> por favor"
+  back_to_main_page: "Regresar a página web central"
+  obligatory_fields: "*Required fields"
+
+  yes_spam: "2010"
+  yes2_spam: "2013"
+  no_spam: "2012"
+  am_i_spam_robot: "Soy spam robot? Cambia a <i>año</i>"
+  at: "arroba"
+  please_fill_at_least_one_contact: "Rellene e-mail o número de teléfono por favor"
+  message_sent_successfully: "Mensaje enviado con éxito"
+
+  # photo
+  views: "Visitas"
+  photos_in_this_section_have_disabled_comments: "Fotas en este sección tienen prohibir commentarios"
+  auto_translation: "Traducción automática"
+  photos: "Fotos"
+  sections: "Sections"
+  comments: "Comentarios"
+  weddings: "Weddings"
+  logout: "Logout"
+  will_show_after_approval: "Comment will show after approval. Thanks for patience."
+
+
+  # administration
+  yes_publish: "ahora"
+  no_publish: "no ahora"
+  do_not_change: "(do not change)"
+  publish_all: "publish all"
+  unpublish_all: "cancelar publicación a todas"
+  photo_is_not_published: "Fotografía no está mostrar a visitantes"
+  tomorrow: "mañana"
+  login: "Login"
+  password: "Contraseña"
+  remember_me: "Remember me"
+  login_successful: "Login successful"
+  logout_successful: "Logout successful"
+  add_photo: "Añadir la foto"
+  edit: "edit"
+  delete: "borrar"
+  delete_all: "borrar todos"
+  section: "section"
+  price: "precio"
+  filter_section: "filter section"
+  add_section: "Añadir section"
+  section_can_be_deleted_if_no_photo: "Section can be deleted if there are no photos in the section or long text"
+  sections_order: "Sections order"
+  title: "Nombre"
+  disable_comments: "Prohibir comentarios"
+  back: "Back"
+  are_you_sure: "¿Estás seguro?"
+  logged_in_require: "You must be logged in to access this page"
+  submit: "Submit"
+  photo_succ_created: "Photo was successfully added."
+  photo_succ_updated: "Photo was successfully updated."
+  show_photo_in_gallery: "Show photo in gallery"
+  edit_photo: "Edit fotografía"
+  administration: "Administración"
+  allow: "Allow"
+  approve: "Approve"
+  approve_it: "approve"
+  disable: "Disable"
+  comments_to_approve: "Comments to approval"
+  comments_in_this_section_will_be_approved: "Comments in this section will be displayed after approval. It is against rude comments, thank you for understanding."
+  latitude: "latitude"
+  longitude: "longitud"
+  note: "nota"
+
+  # cart
+  cart_heading: "Cart"
+  show_cart: "show cart"
+  remove_from_basket: "remove from cart"
+  make_order: "submit"
+  total_price: "total price"
+  please_fill_email: "vyplňte správně e-mail"
+  orders: "Orders"
+  orders_to_send: "Orders to be sent to printing office"
+  orders_in_printer: "Orders in printing office"
+  orders_received_money: "Orders we have received money for"
+  photo_is_in_cart: "Somebody has this photo in a cart"
+  photo_is_in_printer: "Fotografii je obejdnána"
+  photo_deleted: "Fotografía ha borrado"
+  order_done: "sent"
+  back_to_orders: "back to orders"
+  calendar: "Calendario"
+  add_first_photo: "Añadir su fotografía prima!"
+
+
+  # rss
+  rss_new_photos: "fotografías nuevas"
+  rss_description: "fotografías nuevas de fotogalería"
+  rss_locale: "es-es"
+
+
+  # violet 5
+  violet5_slogan: ""
+
+
+
+  # Action View
+  number:
+    # Used in number_with_delimiter()
+    # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
+    format:
+      # Sets the separator between the units, for more precision (e.g. 1.0 / 2.0 == 0.5)
+      separator: ","
+      # Delimets thousands (e.g. 1,000,000 is a million) (always in groups of three)
+      delimiter: "."
+      # Number of decimals, behind the separator (1 with a precision of 2 gives: 1.00)
+      precision: 3
+      # If set to true, precision will mean the number of significant digits instead
+      # of the number of decimal digits (1234 with precision 2 becomes 1200, 1.23543 becomes 1.2)
+      significant: false
+      # If set, the zeros after the decimal separator will always be stripped (eg.: 1.200 will be 1.2)
+      strip_insignificant_zeros: false
+
+    # Used in number_to_currency()
+    currency:
+      format:
+        # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
+        format: "%n %u"
+        unit: "€"
+        # These three are to override number.format and are optional
+        separator: ","
+        delimiter: "."
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    # Used in number_to_percentage()
+    percentage:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        # precision:
+
+    # Used in number_to_precision()
+    precision:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        # precision:
+        # significant: false
+        # strip_insignificant_zeros: false
+
+    # Used in number_to_human_size()
+    human:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      # Used in number_to_human_size()
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      # Used in number_to_human()
+      decimal_units:
+        format: "%n %u"
+        # Decimal units output formatting
+        # By default we will only quantify some of the exponents
+        # but the commented ones might be defined or overridden
+        # by the user.
+        units:
+          # femto: Quadrillionth
+          # pico: Trillionth
+          # nano: Billionth
+          # micro: Millionth
+          # mili: Thousandth
+          # centi: Hundredth
+          # deci: Tenth
+          unit: ""
+          # ten:
+          #   one: Ten
+          #   other: Tens
+          # hundred: Hundred
+          thousand: "Mil"
+          million: "Millón"
+          billion: "Mil millones"
+          trillion: "Trillón"
+          quadrillion: "Cuatrillón"
+
+  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one:  "menos de 1 segundo"
+        other: "menos de %{count} segundos"
+      x_seconds:
+        one:  "1 segundo"
+        other: "%{count} segundos"
+      less_than_x_minutes:
+        one:  "menos de 1 minuto"
+        other: "menos de %{count} minutos"
+      x_minutes:
+        one:  "1 minuto"
+        other: "%{count} minutos"
+      about_x_hours:
+        one:  "alrededor de 1 hora"
+        other: "alrededor de %{count} horas"
+      x_days:
+        one:  "1 día"
+        other: "%{count} días"
+      about_x_months:
+        one:  "alrededor de 1 mes"
+        other: "alrededor de %{count} meses"
+      x_months:
+        one:  "1 mes"
+        other: "%{count} meses"
+      about_x_years:
+        one:  "alrededor de 1 año"
+        other: "alrededor de %{count} años"
+      over_x_years:
+        one:  "más de 1 año"
+        other: "más de %{count} años"
+      almost_x_years:
+        one: "casi 1 año"
+        other: "casi %{count} años"
+    prompts:
+      year:   "Año"
+      month:  "Mes"
+      day:    "Día"
+      hour:   "Hora"
+      minute: "Minutos"
+      second: "Segundos"
+
+  helpers:
+    select:
+      # Default value for :prompt => true in FormOptionsHelper
+      prompt: "Por favor seleccione"
+
+    # Default translation keys for submit FormHelper
+    submit:
+      create: 'Guardar %{model}'
+      update: 'Actualizar %{model}'
+      submit: 'Guardar %{model}'
+
+  # Attributes names common to most models
+  #attributes:
+    #created_at: "Created at"
+    #updated_at: "Updated at"
+
+  # Active Record models configuration
+  activerecord:
+    errors:
+      messages:
+        taken: "ya está en uso"
+        record_invalid: "La validación falló: %{errors}"
+        inclusion: "no está incluido en la lista"
+        exclusion: "está reservado"
+        invalid: "no es válido"
+        confirmation: "no coincide con la confirmación"
+        accepted: "debe ser aceptado"
+        empty: "no puede estar vacío"
+        blank: "no puede estar en blanco"
+        too_long: "es demasiado largo (%{count} caracteres máximo)"
+        too_short: "es demasiado corto (%{count} caracteres mínimo)"
+        wrong_length: "no tiene la longitud correcta (%{count} caracteres exactos)"
+        not_a_number: "no es un número"
+        greater_than: "debe ser mayor que %{count}"
+        greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
+        equal_to: "debe ser igual a %{count}"
+        less_than: "debe ser menor que %{count}"
+        less_than_or_equal_to: "debe ser menor que o igual a %{count}"
+        odd: "debe ser impar"
+        even: "debe ser par"
+      template:
+        header:
+          one:   "No se pudo guardar este/a %{model} porque se encontró 1 error"
+          other:  "No se pudo guardar este/a %{model} porque se encontraron %{count} errores"
+        # The variable :count is also available
+        body: "Se encontraron problemas con los siguientes campos:"
+
+
+    # The default format to use in full error messages.
+    format: "%{attribute} %{message}"
+
+  
+  # Active Support
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%e/%m/%Y"
+      short: "%e de %b"
+      long: "%e de %B de %Y"
+
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+    # Used in date_select and datime_select.
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%A, %e de %B de %Y %H:%M:%S %z"
+      short: "%e de %b %H:%M"
+      long: "%e de %B de %Y %H:%M"
+      nice: "%d. %B - %H:%M"
+    am: "am"
+    pm: "pm"
+
+  # Used in array.to_sentence.
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " y "
+      last_word_connector: ", y "

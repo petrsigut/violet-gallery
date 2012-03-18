@@ -1,0 +1,31 @@
+<%= will_paginate @photos, :params => {:section_id => @section_id}, :inner_window => 8,:class => 'pagination ajax' %>
+
+  <% for photo in @photos %>
+    <div class="thumb<%= just_edited(photo.id, params[:photo]) %>">
+      <%= link_to photo_thumb(photo, admin_photo_path(photo)), photo %>
+      <div class="phototitle">
+        <%= link_to t(:edit), edit_admin_photo_path(photo, :page => params[:page], :section => @section_id) %>
+      <%= link_to t(:delete), [:admin, photo], :confirm => t(:are_you_sure), :method => :delete %>
+      <div id="cart_icons">
+        <% if (photo.is_in_cart == true) %>
+          <%= image_tag("cart.png", :title => t(:photo_is_in_cart)) %>
+        <% end %>
+        <% if (photo.is_ordered == true) %>
+          <%= image_tag("printer.png", :title => t(:photo_is_in_printer)) %>
+        <% end %>
+        <%# adding 1 hour because of Timezones...bad solution %>
+        <% if (photo.publish_at.nil? or photo.publish_at.to_datetime >= Time.now.to_datetime+1.hour) %>
+          <%= image_tag("admin/clock.png", :title => t(:photo_is_not_published)) %>
+        <% end %>
+
+      </div>
+
+      <br/>
+      <%=h truncate(photo.title, :length => 17, :omission => "...") %>
+      </div>
+      </div>
+  <% end %>
+
+  <br clear="all" />
+  <%= will_paginate @photos, :class => 'pagination ajax' %>
+

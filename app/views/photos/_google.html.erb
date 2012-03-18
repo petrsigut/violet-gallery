@@ -1,0 +1,44 @@
+<%# Google translation on photo title %>
+<% if I18n.locale != I18n.default_locale %>
+    <script type="text/javascript" >
+      google.load("language", "1");
+
+      function initialize_translate() {
+        google.language.getBranding('branding');
+
+      google.language.translate("<%= @photo.title %>", "<%= I18n.default_locale %>",
+          "<%= I18n.locale %>", function(result) {
+        if (!result.error) {
+        var container = document.getElementById("translation");
+                container.innerHTML = result.translation;
+                  }
+                  });
+      }
+//google.setOnLoadCallback(initialize);
+      initialize_translate();
+
+    </script>
+  <% end %>
+  <%# if @photo.longitude != nil and @photo.latitude != nil %>
+  <script type="text/javascript">
+
+  function initialize_map() {
+  window.latlng = new google.maps.LatLng(<%= @photo.latitude %>,<%= @photo.longitude %>);
+  var myOptions = {
+    zoom: 8,
+    center: window.latlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  window.map = new google.maps.Map(document.getElementById("map_canvas"),
+      myOptions);
+
+  var marker = new google.maps.Marker({
+      position: window.latlng,
+      title: "<%= @photo.title %>"
+  });
+  marker.setMap(window.map);  
+
+  }
+initialize_map();
+    </script>
+  <%# end %>

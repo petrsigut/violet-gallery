@@ -1,0 +1,13 @@
+<% link_to new_admin_photo_path do %>
+  <%= image_tag 'admin/add.png' %>
+  <%=t :add_photo %>
+<% end %>
+<hr/>
+
+<%# http://pullmonkey.com/2008/08/05/dynamic-select-boxes-many-to-many-ruby-on-rails/ %>
+<%= collection_select(nil, :section_id, @sections, :id, :title,
+                      {:prompt   => t(:filter_section)},
+                     {:onchange => "#{remote_function(:url  => {:action => :index}, :method => :get, :with => "'section_id='+value")}"})%>
+<div id="photos">
+  <%= render(:partial => "index") %>
+</div>

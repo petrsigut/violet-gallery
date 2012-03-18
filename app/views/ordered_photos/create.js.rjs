@@ -1,0 +1,16 @@
+#page.select("div#comment").each {|div| div.hide}
+
+#page.insert_html :bottom, 'comments', :partial => 'comment'
+
+#page.replace_html("amount_in_cart", :amount_in_cart => "12")
+
+page["cart"].visual_effect :opacity, 
+    :duration => 1.5, :from => 0, :to => 1.0 
+
+page.replace_html("cart", :partial => "photos/cart")
+
+#page["new_comment"].reset
+
+#page[:cart].visual_effect :highlight,
+#                                  :startcolor => "#88ff88" ,
+#                                  :endcolor => "#114411"

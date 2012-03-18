@@ -1,0 +1,13 @@
+  <%= will_paginate @comments %>
+  <% for comment in @comments %>
+    <p>
+    <%= photo_thumb(comment.photo,@section) %>
+    </p>
+
+    <p>
+   
+    <%= comment.msg %>
+    <%= comment.name %>
+    </p>
+  <% end %>
+

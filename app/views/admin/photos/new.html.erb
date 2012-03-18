@@ -1,0 +1,64 @@
+<h1><%=t :add_photo %></h1>
+
+<% form_for [:admin, @photo], :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  <div id="column-1-big">
+    <h2><%=t :need_to_fill %></h2>
+  <p>
+    <%= f.label :title, t(:name) %><br />
+    <%= f.text_field :title %>
+    </p>
+    <p>
+    <%=t :photo_file %><br/>
+  <%= f.file_field :image_file, :multiple => "multiple" %>
+  </p>
+  <p class="small">
+  <%=t :upload_more_photos_at_once %>
+  </p>
+  <p>
+  <%=t :section_for_photo %><br/>
+  <%= collection_select :photo, :section_id, @sections, :id, :title %>
+  </p>
+  <% if Setting.get_setting("show_author") == "true" %>
+    <p>
+    autor: <%= collection_select :photo, :author_id, @authors, :id, :name %>
+    </p>
+  <% end %>
+  <p>
+    <%= f.submit t(:add_photo) %>
+  </p>
+
+
+  </div>
+  <div id="column-2">
+    <h3>Nepovinné položky</h3>
+  <% if (Setting.get_setting("show_orders") == "true") %>
+  <p>
+    <%= f.label :price, t(:price) %><br />
+    <%= f.text_field :price %>
+    </p>
+  <% end %>
+  <% if (Setting.get_setting("show_map") == "true") %>
+    Uvádět jako číslo s desetinou tečkou např. 12.541 nebo -35.47
+    <p>
+      <%= f.label :latitude, t(:latitude) %><br />
+      <%= f.text_field :latitude %>
+      </p>
+    <p>
+      <%= f.label :longitude, t(:longitude) %><br />
+      <%= f.text_field :longitude %>
+    </p>
+  <% end %>
+  <p>
+  <%=t :publish %> <%= select_tag "photo[publish_at]",
+    options_for_select(@publish_at, Time.now.to_s(:db)) %>
+    </p>
+  <p>
+    <%= f.label :note, t(:note) %><br />
+    <%= f.cktext_area :note %>
+  </p>
+
+</div>
+<% end %>
+<br clear="all">
+

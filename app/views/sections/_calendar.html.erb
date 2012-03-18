@@ -1,0 +1,11 @@
+<%= calendar_wedding(@year_to_show, @month_to_show) %>
+
+<%= link_to_remote t(:previous),
+  :url => { :action => :calendar_nav, :query => @time_from_query-1.months } %>
+
+<%= link_to_remote t(:current),
+  :url => { :action => :calendar_nav, :query => Time.now } %>
+
+<%= link_to_remote t(:next),
+  :url => { :action => :calendar_nav, :query => @time_from_query+1.months } %>
+ 

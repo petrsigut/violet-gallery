@@ -1,0 +1,31 @@
+<%= render(:partial => 'menu') %>
+<table border="1">
+  <th><%=t :cart_contact %></th><th><%=t :revenue %></th><th><%=t :cart_photo %></th><th><%=t :sending %></th>
+  <% for cart in @carts %>
+  <% email_body = "Jako přílohu e-mailu přiložte fotografie v plném rozlišení
+  pojmenované číselně takto:\n " %>
+
+    <tr>
+      <td><%= cart.address %><br/><%= cart.phone %><br/><%= cart.email %></td>
+  <td><%= cart.count_author_commission %></td>
+  <td>
+    <% for ordered_photo in cart.ordered_photos %>
+      <% photo = ordered_photo.photo %>
+      <%= photo_thumb(photo,section_photo_path(photo.section, photo)) %>
+      <% email_body += photo.id.to_s+".jpg ("+photo.title+" - "+ordered_photo.print_size.size+")\n" %>
+    <% end %>
+  </td>
+  <td>
+  <%= mail_to(Setting.get_setting("print_office_email"), "odeslat do tisku",
+  :subject => "objednávka - var.symbol:"+cart.id.to_s, :body => email_body) %>
+</td>
+<td>
+  <%= button_to t(:order_done),
+    {:action => :move_to_printer, :id => cart.id}, :confirm => t(:are_you_sure), :method => :post %>
+
+</td>
+
+</tr>
+<% end %>
+</table>
+

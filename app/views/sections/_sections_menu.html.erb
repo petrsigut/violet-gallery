@@ -1,0 +1,30 @@
+<%= render :partial => 'menu_banner' %>
+
+<% if Setting.get_setting("side_menu_position") == "top" %>
+  <ul id="nav_sections">
+      <li><%= link_to_unless_current t(:all_photos), "/" %></li>
+      <% for section in Section.find_by_hardcoded('side_menu').children %>
+        <% if (section.virtual == false) %>
+          <li><%= link_to_unless_current section.title, section_path(section) %></li>
+        <% else %>
+          <li><%= link_to_unless_current section.title, section.virtual_url %></li>
+        <% end %>
+  <% end %>
+  </ul>
+<% end %>
+
+
+
+<% content_for :left_menu do %> 
+  <% if Setting.get_setting("side_menu_position") == "left" %>
+          <div id="sidebar">
+                  <div class="sidebar-info">
+                  <ul class="sidebar-list">
+                    <ul><%= render :partial => 'section', :collection => Section.find_by_hardcoded('side_menu').children %></ul>
+              
+                  </ul><!-- end ul submenu -->
+
+              </div><!-- end sidebar info -->
+          </div><!-- end sidebar div -->
+        <% end %>        
+<% end %>

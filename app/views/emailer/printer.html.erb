@@ -1,0 +1,31 @@
+Přehled odeslané objednávky
+
+Informace k platbě
+
+<%= @print_office_bank_account %>
+
+Fotografie budou zpracovány a expedovány po obdržení platby na účet.
+Děkujeme za vaši objednávku
+
+Doručovací adresa
+
+<%= @cart.address %>
+
+Kontakt na vás
+<%= @cart.email %>
+<%= @cart.phone %>
+
+Objednané fotografie
+
+<% for ordered_photo in @ordered_photos %>
+  <% ordered_photo.photo.title %>
+  <% ordered_photo.print_size_id.size %>
+  <%= url_for :host => @host, :controller => 'photos', :action => 'show', :id => ordered_photo.photo.id %>
+<% end %>
+
+<%=t :total_price %>
+<%= @total_price %>
+
+<%#= @commission_author %>
+
+<%#= @author_bank_account %>

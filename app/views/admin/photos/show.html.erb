@@ -1,0 +1,31 @@
+<%= link_to("zpět na úpravy fotografií", admin_photos_path(:section_id => session[:back_to_edit_section], :page => session[:back_to_edit_page], :photo => @photo.id)) %>
+<div id="main_content">
+  <div class="title">
+    <h1><%= @photo.title %></h1>
+  </div>
+
+<p>
+<%=t :views %>: <%=h @photo.view %>
+<br/>
+<%=t :section %>: <%=h @photo.section.title %>
+<br/>
+<% if (Setting.get_setting("show_orders") == "true") %>
+  <%=t :price %>: <%=h @photo.price %>
+  <br/>
+<% end %>
+<% if (Setting.get_setting("show_map") == "true") %>
+  <%=t :latitude %>: <%=h @photo.latitude %>
+  <br/>
+  <%=t :longitude %>: <%=h @photo.longitude %>
+  <br/>
+<% end %>
+<%=t :note %>: <%=h @photo.note %>
+</p>
+
+<center> 
+  <div class="content_text">
+    <% photo_fs = "/photos/#{@photo.id}.jpg" %>
+    <%= image_tag(photo_fs, :class => "fotka") %>
+  </div>
+</center>
+

@@ -1,0 +1,18 @@
+<% link_to new_admin_section_path do %>
+  <%= image_tag 'admin/add.png' %>
+  <%=t :add_section %>
+<% end %>
+
+<ul id="sections">
+  <%# do not use by_parent_id(nil) - sql null problems %>
+  <%= render :partial => 'section',
+    :collection => Section.find(:all, :conditions => "parent_id is null") %></ul>
+<p class="small">
+<%=t :section_can_be_deleted_if_no_photo %>
+</p>
+
+
+<%# http://garyfgordon.com/rails/ruby/2009/04/20/sortable-element-with-a-tree.html %>
+<%= sortable_element("sections", :url => sort_admin_sections_path,
+                     :handle => "handle", :tree => true, :constraint => :vertical) %>
+

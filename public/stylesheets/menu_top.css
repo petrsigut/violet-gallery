@@ -1,0 +1,14 @@
+/* style for the menu on the top */
+
+#main-text {
+/*	float:right;*/
+  margin: 0 auto;
+	width:950px;
+	/*margin-top:18px;*/
+	/*margin-bottom:50px;*/
+}
+.work-item img {
+  margin: 12px;
+}
+
+

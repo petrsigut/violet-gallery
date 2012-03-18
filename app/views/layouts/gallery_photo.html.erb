@@ -1,0 +1,115 @@
+<%= render(:partial => 'layouts/head_photo') %>
+
+<!-- facebook -->
+<% # facebook is doing new http request, so it does not
+   #matter that during ajax next/previous we had bad url and image in these tags
+%>
+<%= render(:partial => 'facebook_tags') %>
+
+<!-- stylesheets-->
+  <%= stylesheet_link_tag 'style_photo' %>
+  <%= stylesheet_link_tag 'nav' %>
+  <%= stylesheet_link_tag 'common' %>
+  <%= stylesheet_link_tag 'superfish_photo' %>
+  <%= stylesheet_link_tag 'tooltips' %>
+
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag 'effects' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'validation' %>
+  <%= javascript_include_tag 'gallery_photo' %>
+  <%= javascript_include_tag 'event.simulate' %>
+  <%= javascript_include_tag 'tooltips' %>
+  <% if I18n.locale != I18n.default_locale %>
+    <script type="text/javascript" src="http://www.google.com/jsapi"> </script>
+  <% end %>
+  <script type="text/javascript" charset="utf-8">
+      $$("a .help").each( function(link) {
+              new Tooltip(link, {mouseFollow: false});
+                });
+  </script>
+
+  <!--  <span id="google_maps_head"> -->
+    <%= render :partial => 'google_maps_head' %>
+<!--  </span> -->
+ 
+
+
+<script type="text/javascript">
+    Event.observe(window, 'load', function() {
+  $$('a[href^=#]:not([href=#])').each(function(element) {
+    element.observe('click', function(event) {
+      new Effect.ScrollTo(this.hash.substr(1));
+      Event.stop(event);
+    }.bindAsEventListener(element))
+  })
+})
+
+</script>
+
+<% if browser_is? :is_able_to_ajax %>
+<script>
+Event.observe(window, 'load', function() {
+  window.history.replaceState(<%= @photo.id %>, "<%= @photo.title %>", <%= @photo.id %>);
+})
+
+window.onpopstate = function (e) {
+  if (e.state != null) {
+      var basedir = document.location.href;
+      basedir = basedir.substring(0, basedir.lastIndexOf('/')) + '/';
+      new Ajax.Request(basedir+e.state, { method:'get' });
+    }
+};
+</script>
+<% end %>
+
+
+</head>
+<body>
+
+  <div class="cart" id="cart">
+    <%= render :partial => "photos/cart" -%>
+  </div>
+
+  <div id="photo_navigation">
+    <%= render :partial => 'photos/photo_navigation' -%>
+  </div>
+            
+  <div id="logo">
+    <%= render :partial => "photos/photo_logo" -%>
+  </div>
+
+  <div>
+    <%= yield  %>
+  </div>
+                    
+  <%= yield :paginate %>
+                
+                
+<div id="footer">
+  <%= render(:partial => 'layouts/copy') %>
+</div>
+        
+<ul> 
+  <li><%= link_to t(:home), "/" %></li>
+  <li><%= link_to t(:contact), "/info/kontakt" %></li>
+</ul><!-- end list -->
+        
+<!-- cufon -->
+<%= javascript_include_tag "cufon-yui" %>
+<%= javascript_include_tag "Ubuntu_400.font.js" %>
+
+<script type="text/javascript">
+  Cufon.replace('h1');
+  document.observe("dom:loaded", function() {
+    initialize_translate();
+  });
+
+</script>
+ <div id="photo_google" >
+  <%= render :partial => 'google' %>
+</div>
+
+
+</body>
+</html>

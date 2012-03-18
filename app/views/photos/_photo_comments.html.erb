@@ -1,0 +1,16 @@
+<% if (@photo.section.not_comment != 1) %>
+  <% if (@photo.section.not_comment == 2) %>
+    <%=t :comments_in_this_section_will_be_approved %>
+  <% end %>
+<div id="container">
+  <div id="column-1-big">
+    <%= render :partial => "comments/photo_comments" %>
+  </div>
+  <div id="column-2">
+    <%= render :partial => "comments/new" %>
+  </div>
+</div>
+<% else %>
+  <%= t(:photos_in_this_section_have_disabled_comments) %>
+<% end %>
+

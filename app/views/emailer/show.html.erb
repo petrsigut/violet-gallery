@@ -1,0 +1,22 @@
+<h1>Order/Question sent. Thank you!</h1>
+<p>
+You will receive summary to your e-mail.
+</p>
+
+<h2>Your address/question</h2>
+<p>
+<%= @cart.address %>
+</p>
+<h3>How to contact you</h3>
+<%= @cart.email %>
+<%= @cart.phone %>
+
+<h2>Photographies</h2>
+<% for ordered_photo in @ordered_photos %>
+  <% photo = ordered_photo.photo %>
+  <%= photo_thumb(photo,section_photo_path(photo.section, photo)) %>
+<% end %>
+<br clear="all">
+<%=t :total_price %>
+<%= @total_price %>
+

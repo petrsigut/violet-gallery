@@ -1,0 +1,16 @@
+<h1><%=t :login %></h1>
+ 
+<% form_for @user_session, :url => user_session_path do |f| %>
+  <%= f.error_messages %>
+  <%= f.label :login, t(:name) %><br />
+  <%= f.text_field :login %><br />
+  <br />
+  <%= f.label :password, t(:password) %><br />
+  <%= f.password_field :password %><br />
+  <br />
+  <% if (Setting.get_setting("show_remember_me") == "true") %>
+    <%= f.check_box :remember_me %><%= f.label :remember_me, t(:remember_me) %><br />
+    <br />
+  <% end %>
+  <%= f.submit t(:login) %>
+<% end %>

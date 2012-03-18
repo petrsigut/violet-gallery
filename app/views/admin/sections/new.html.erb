@@ -1,0 +1,66 @@
+<h1><%=t :add_section %></h1>
+
+<% form_for([:admin, @section]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title, t(:title) %><br />
+    <%= f.text_field :title %>
+    </p>
+  <p>
+    <%= f.submit t(:add_section) %>
+  </p>
+  <p> Povinnou položkou pro založení nové sekce je pouze její jméno, další
+  volby jsou volitelné a není třeba je měnit.
+  <hr>
+      <h3>Nepovinné položky</h3>
+  </p>
+    <p>
+    <%= f.check_box :folder, :onchange => "$('folder').toggle()" %>
+    Zatrhněte aby sekce byla pouhým nadpisem v menu, nepůjde do ni vkládat fotografie. </p>
+    </p>
+
+
+    <span id="folder">
+      <p>
+      <%= f.check_box :builtin %> Fotografie ze sekce nezobrazovat na hlavní straně (pouze v sekci samotné)
+      </p>
+
+
+    <p>
+    <%=t :comments %>
+    <br/>
+      <%= f.radio_button :not_comment, "0", :checked => "checked" %>
+      <%= f.label :not_comment, t(:allow) %>
+      <br/>
+      <%= f.radio_button :not_comment, "2" %>
+      <%= f.label :not_comment, t(:approve) %>
+      <br/>
+      <%= f.radio_button :not_comment, "1" %>
+      <%= f.label :not_comment, t(:disable) %>
+    </p>
+    <p>
+      <%= f.label :text %><br />
+      <%= f.cktext_area :text %>
+      </p>
+      <% if (Setting.get_setting("can_change_photos_order") == "true") %>
+        <p>
+        Pořadí fotografií v sekci: <br/>
+        <%= f.select_tag "section[order]",
+          options_for_select([ ["normální - nejnovější první", "DESC"], ["obrácené - nejstarší první", "ASC"] ], :selected => @section.order) %>
+        </p>
+      <% end %>
+      </span>
+  <br/>
+  Nadřazená sekce:<br/>
+  <%= collection_select :section, :parent_id, @sections, :id, :title, :selected => @side_section_id  %>
+  <% if (Setting.get_setting("show_sections_published") == "true") %>
+    <p>
+      Publikovat sekci: 
+      <%= f.check_box :published %>
+    </p>
+  <% end %>
+
+
+<% end %>
+

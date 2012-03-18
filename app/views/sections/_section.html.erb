@@ -1,0 +1,17 @@
+<li>
+<%- if section.folder == true -%>
+  <h3><%= section.title %></h3>
+<%- elsif (section.folder == false and section.virtual == false) -%>
+  <%= link_to_unless_current section.title, section_path(section) -%>
+<%- elsif (section.virtual == true) -%>
+  <%= link_to_unless_current section.title, section.virtual_url -%>
+<%- end -%>
+
+<% if section.children.nil? %>
+  <span>no subcategories</span>
+<% else %>
+  <ul><%= render :partial => 'section',
+    :collection => section.children -%></ul>
+<%- end -%>
+</li>
+

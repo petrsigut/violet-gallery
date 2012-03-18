@@ -1,0 +1,10 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title><%= Setting.get_setting("gallery_name") %></title>
+  <meta name="description" content="<%= Setting.get_setting("gallery_name")+" "+Setting.get_setting("meta_description") %>" />
+  <meta name="keywords" content="<%= Setting.get_setting("meta_keywords") %>" />
+  <%= auto_discovery_link_tag(:rss, :controller => :photos, :action => 'feed.rss') %>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+

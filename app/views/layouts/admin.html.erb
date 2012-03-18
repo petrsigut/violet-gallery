@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <title><%=t :administration %> | <%= Setting.get_setting("gallery_name") %> | Violet5</title>
+  <%#= stylesheet_link_tag 'gallery-new' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'admin/application' %>
+  <%= stylesheet_link_tag 'admin' %>
+  <%= javascript_include_tag :ckeditor %>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+  <div id="top_menu">
+    <% link_to admin_url do %>
+      <%= image_tag 'admin/home.png' -%>
+    <% end %>
+    <%- link_to admin_photos_url do -%>
+      <%= image_tag 'admin/photos.png' -%>
+      <%=t :photos -%>
+    <%- end -%>
+
+    <%- link_to admin_sections_url do -%>
+      <%= image_tag 'admin/sections.png' -%>
+      <%=t :sections -%>
+    <%- end -%>
+
+    <%- link_to admin_comments_url do -%>
+      <%= image_tag 'admin/comments.png' -%>
+      <%= t(:comments) -%>
+      <span title="ke schválení <%= Comment.not_approved.count %>">(<%= Comment.not_approved.count %>)*</span>
+    <%- end -%>
+
+    <%- link_to admin_guestbooks_url do -%>
+      <%= image_tag 'admin/gb.png' -%>
+      <%=t :guest_book_heading -%>
+    <%- end -%>
+
+    <%- link_to admin_textboxes_url do -%>
+      <%= image_tag 'admin/gb.png' -%>
+      <%=t :banners -%>
+    <%- end -%>
+
+
+    <% if (Setting.get_setting("show_events") == "true") %>
+      <%- link_to admin_events_url do -%>
+        <%= image_tag 'admin/calendar.png' -%>
+        <%=t :calendar -%>
+      <%- end -%>
+    <% end %>
+
+    <% if (Setting.get_setting("show_orders") == "true") %>
+      <%- link_to admin_carts_url do %>
+        <%= image_tag 'admin/orders.png' -%>
+        <%=t :orders %>
+      <% end %>
+    <% end %>
+
+  <%- link_to logout_path do -%>
+      <%= image_tag 'admin/logout.png' -%>
+  <%- end -%>
+</div>
+<div id="main_content">
+<hr>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<!-- menu -->
+<div id="page_content_left">
+  <div class="content_text">
+    <ul>
+    </ul>
+  </div>
+</div>
+<!-- KONEC menu -->
+
+<div id="page_content_right">
+    <%= yield  %>
+</div>
+
+<!-- footer -->
+<div id="page_bottom">
+</div>
+		
+</div>
+
+<div id="footer">
+<div id="footer_content">
+<div id="copyrights">
+</div>
+	<div>
+    </div>
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

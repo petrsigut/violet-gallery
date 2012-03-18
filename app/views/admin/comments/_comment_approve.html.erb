@@ -1,0 +1,20 @@
+<p class="quote">
+<% photo = Photo.find(comment.photo_id, :include => :section) %>
+  <span style="float:left;">
+    <%= photo_thumb(photo) %>
+  </span>
+
+  <br/>
+  <strong><%=h comment.name %></strong>
+  <span class="date"><%= t(:before) %> <%=h time_ago_in_words(comment.created_at) %></span>
+    <br/>
+  <%= nl2br(h(comment.msg)) %>
+  <br clear="all">
+  <%= image_tag 'admin/delete.png' %>
+<%= link_to t(:delete), admin_comment_path(comment, {:approval => "approval"}), :confirm => t(:are_you_sure), :method => :delete %>
+  <%= image_tag 'admin/apply.png' %>
+<%= link_to t(:approve_it), approve_admin_comment_path(comment.id)
+%>
+
+</p>
+

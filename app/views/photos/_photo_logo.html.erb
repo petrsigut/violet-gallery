@@ -1,0 +1,12 @@
+             <h1>
+                <%= @photo.title %>
+              </h1>
+
+              <span id="caption_translation">
+                <span id="translation" title="<%=t :auto_translation %>"></span>
+              <% if I18n.locale != I18n.default_locale %>*<% end %>
+                <br/>
+                <span id='branding'></span>
+                
+              </span>
+

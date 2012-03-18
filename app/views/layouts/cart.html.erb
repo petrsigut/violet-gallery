@@ -1,0 +1,136 @@
+<%= render(:partial => 'layouts/head_photo') %>
+<!-- stylesheets-->
+  <%= stylesheet_link_tag 'style_photo' %>
+  <%= stylesheet_link_tag 'nav' %>
+  <%= stylesheet_link_tag 'common' %>
+  <%= stylesheet_link_tag 'superfish_photo' %>
+
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag 'effects' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'validation' %>
+  <%= javascript_include_tag 'gallery_photo' %>
+
+
+<script type="text/javascript">
+    Event.observe(window, 'load', function() {
+  $$('a[href^=#]:not([href=#])').each(function(element) {
+    element.observe('click', function(event) {
+      new Effect.ScrollTo(this.hash.substr(1));
+      Event.stop(event);
+    }.bindAsEventListener(element))
+  })
+})
+
+</script>
+
+</head>
+<body>
+
+<p id="nav">
+  <div id="main">
+
+    <div class="container">
+    
+    	<div id="header">
+        
+        	<div id="menu">
+                  <ul id="nav" class="sf-menu">
+
+                    <span id="photo_navigation">
+                      <li><%= link_to "back to gallery", root_path %></li>
+                      <li><% if session[:last_photo_page] %>
+  <%= link_to t(:back_to_photo), session[:last_photo_page] %>
+<% end %></li>
+
+<li><%=t :cart_heading %></li>
+                      </span>
+                     	
+                                   
+                </ul><!-- end nav list -->
+            
+            </div><!-- end menu div -->
+            
+            <div id="logo">
+                
+            
+            </div><!-- end logo -->
+            
+        
+        </div><!-- end header div -->
+        
+    </div><!-- end container class -->
+
+</div><!-- end main div -->
+
+<div id="content">
+
+  <div class="container">
+        
+           
+        <div id="main-text">
+            	
+            <div class="work-item">
+                
+    <%= yield  %> <!-- photos -->
+                    
+                    
+            </div><!-- end work item -->
+                
+            <div class="back-to-top">
+            
+            	<div class="hr"></div><!-- end hr div -->
+                
+                <small><a href="#main"><%=t :back_to_top %></a></small>
+            
+            </div><!-- end back-to-top -->
+              <%= yield :paginate %>
+                
+                
+        </div><!-- end main-text div -->
+
+    </div><!-- end container -->
+            
+</div><!-- end content -->
+        
+<div id="footer">
+
+	<div class="container">
+    
+    	<div id="copyright">
+        
+            <p>
+            <%= render(:partial => 'layouts/copy') %>
+            </p>
+        
+        </div><!-- end copyright -->
+        
+        <div id="footer-nav">
+        
+          <ul>
+
+            
+                <li><%= link_to t(:home), "/" %></li>
+                <li><%= link_to t(:contact), "/info/kontakt" %></li>
+            
+            </ul><!-- end list -->
+        
+        </div><!-- end footer nav -->
+    
+    </div><!-- end container -->
+
+</div><!-- end footer -->
+
+
+
+<!-- cufon -->
+<%= javascript_include_tag "cufon-yui" %>
+<%= javascript_include_tag "Ubuntu_400.font.js" %>
+
+<script type="text/javascript">
+  Cufon.replace('h1, h2, h3, #statement');
+
+</script>
+
+</body>
+</html>

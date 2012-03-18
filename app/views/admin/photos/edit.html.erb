@@ -1,0 +1,69 @@
+<h1><%=t :edit_photo %></h1>
+
+<% form_for [:admin, @photo], :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title, t(:name) %><br />
+    <%= f.text_field :title %>
+    </p>
+  <% if (Setting.get_setting("show_orders") == "true") %>
+  <p>
+    <%= f.label :price, t(:price) %><br />
+    <%= f.text_field :price %>
+    </p>
+  <% end %>
+  <% if (Setting.get_setting("show_map") == "true") %>
+  <p>
+    <%= f.label :latitude, t(:latitude) %><br />
+    <%= f.text_field :latitude %>
+  </p>
+  <p>
+    <%= f.label :longitude, t(:longitude) %><br />
+    <%= f.text_field :longitude %>
+    </p>
+  <% end %>
+  <p>
+  <% if (@photo.publish_at.nil?) %>
+    Fotografie <strong>není publikována</strong>
+  <% elsif (@photo.publish_at.to_datetime <= Time.now.to_datetime+1.hour) %>
+    Fotografie je již <strong>publikována</strong>
+  <% else %>
+    Fotografie bude publikována <%= l(@photo.publish_at, :format => :nice) %>
+  <% end %>
+<br/>
+  Změnit publikování na: <%= select_tag "photo[publish_at]",
+    options_for_select(@publish_at, "do_not_change") %>
+  </p>
+  <p>
+    <%= f.label :note, t(:note) %><br />
+    <%= f.cktext_area :note %>
+  </p>
+
+
+    <p>
+
+    <%= collection_select :photo, :section_id, @sections, :id, :title %>
+    </p>
+    <% if Setting.get_setting("show_author") == "true" %>
+      <p>
+      autor: <%= collection_select :photo, :author_id, @authors, :id, :name %>
+      </p>
+    <% end %>
+
+    <p>
+    Vyměnit fotografii:
+    <%= f.file_field :image_file  %>
+
+    </p>
+
+  <p>
+    <%= f.submit t(:submit) %>
+  </p>
+<% end %>
+
+<%= image_tag(@photo.path, :class => "photo") %>
+
+<br/>
+
+<%= link_to t(:show_photo_in_gallery), @photo %> 

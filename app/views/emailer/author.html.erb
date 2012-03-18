@@ -1,0 +1,23 @@
+Přehled objednávky ve vaší fotogalerii:
+
+
+Kontakt na kupujícího
+---------------------
+<%= @cart.email %>
+<%= @cart.phone %>
+---
+<%= @cart.address%>
+
+Objednané fotografie
+--------------------
+<% for ordered_photo in @ordered_photos %>
+  <% ordered_photo.photo.title %>
+  <% ordered_photo.print_size_id.size %>
+  <%= url_for :host => @host, :controller => 'photos', :action => 'show', :id => ordered_photo.photo.id %>
+<% end %>
+
+<%=t :total_price %>
+<%= @total_price %>
+
+<%#= @commission_author %>
+

@@ -1,0 +1,33 @@
+<% content_tag_for :li, section do %>
+  <% if section.hardcoded == "0" %>
+    <span class="handle">[<%= image_tag 'admin/dd.png' %> <%=t :drag_and_drop %>]</span>
+  <% end %>
+
+  <% if section.virtual == false and section.folder == false %>
+    <b><%= section.title %></b>
+  <% elsif section.folder == true %>
+    <i><%= section.title %></i>
+  <% else %>
+    <%= section.title %>
+  <% end %>
+
+  <% if (section.hardcoded == "0") %>
+    <%= link_to image_tag('admin/edit.png'), edit_admin_section_path(section) %>
+    <% if (section.photos.count == 0 and
+    (section.text.nil? or section.text.size < 50)) and
+    (section.children.empty?) and
+    (section.virtual == false or section.folder == true) %>
+      <%= link_to image_tag('admin/delete.png'), [:admin, section], :confirm => t(:are_you_sure), :method => :delete %>
+    <% end %>
+    <% if (section.published == false) %>
+      <%= image_tag('admin/clock.png') %>
+    <% end %>
+  <% end %>
+
+    <% if section.children.nil? %>
+      <span>no subcategories</span>
+    <% else %>
+      <ul><%= render :partial => 'section', :collection => Section.find_all_by_parent_id(section.id, :order => :position) %></ul>
+    <% end %> 
+<% end %> 
+

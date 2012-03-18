@@ -1,0 +1,49 @@
+
+<h1><%= t(:add_message) %></h1>
+
+<%# because it is remote_form_for we have to bind the validation to conditions... I did not find another solution
+
+# There can't be error in the names 'guestbook_msg' - than it only render js!
+%>
+
+<% remote_form_for(@guestbook, :condition => "(Validation.validate('guestbook_name')) && Validation.validate('guestbook_msg') && (Validation.validate('guestbook_spam'))")  do |f| %>
+  <%= f.error_messages %>
+  <% if flash[:notice] -%>
+    <div id="errorExplanation"><%= flash[:notice] %></div>
+  <% end -%>
+  <p>
+  <%= f.label :name, obligatory_field(t(:name)) %>
+    <span id="advice-required-guestbook_name" class="form_advice" style="display:none">
+    <%= t(:please_fill_this_field) %></span><br/>
+    <%= f.text_field :name, :class => "required" %>
+  </p>
+  <p>
+    <%= f.label :web, "Web" %><br />
+    <%= f.text_field :web %>
+
+    </p>
+    <p>
+    <%= f.label :spam, obligatory_field(t(:am_i_spam_robot)) %><br/>
+    <%= select_tag "guestbook_spam", options_for_select([ t(:yes_spam), [t(:no_spam), "1"] ]),
+      :class => "validate-selection" %>
+    <span id="advice-validate-selection-guestbook_spam" class="form_advice" style="display:none">
+    <%= t(:please_change_to_no) %></span>
+
+  </p>
+  <p>
+    <%= f.label :msg, obligatory_field(t(:message)) %>
+    <span id="advice-required-guestbook_msg" class="form_advice" style="display:none">
+    <%= t(:please_fill_this_field) %></span>
+    <%= f.text_area :msg, :class => "required", :rows => 3 %>
+  </p>
+  <p>
+  <%= submit_tag t(:send_message), :id => "commit" %>
+  </p>
+  <p>
+  <strong><%=t :obligatory_fields %>*</strong>
+  </p>
+<% end %>
+  <script type="text/javascript">
+    new Validation('new_guestbook', {immediate:true});
+  </script>
+

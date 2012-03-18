@@ -1,0 +1,6 @@
+<!-- KOSIK -->
+<% if (amount_in_cart > 0) %>
+  <%= link_to t(:show_cart)+" ("+amount_in_cart.to_s+")", cart_path(:query => @cart_back) %>
+<% end %>
+<!-- /KOSIK -->
+

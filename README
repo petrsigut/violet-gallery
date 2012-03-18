@@ -1,0 +1,52 @@
+Violet Gallery is advanced photo gallery written in Ruby on Rails.
+
+In action you can see it here: (with commercial template)
+http://en.sigut.net/
+
+FEATURES
+--------
+- sharp and nice photo thumbnails by ImageMagick
+- next/previous photography by keyboard & ajax with updating URL (HTML5) (degrade to
+  non js link in incapable browser)
+- comments, can be set to allowed, prohibited and 'need to be approved' by
+  section
+- buying photos (just sending email, no pay gateway integration)
+- delayed publishing of photos
+- mass photo upload (HTML5)
+- maps integration - if you fill GPS (beta)
+- localization, UI translated to English, Czech, (partially) Spanish, photos'
+  titles translation via Goole Translate
+- Calendar (to show when photographer have time)
+- Guestbook
+- position of items in menu can be changed via drag&drop
+- usess Cufon (font replacement), JavaScript form validation (via Really easy
+  field validation)
+
+and
+
+dirty code, lots of hacks and various problems and temporaly solutions...:)
+
+TODO
+----
+- some free template to have decent default look
+- write tests
+- refactor
+- port to Rails 3
+- photo blog feaure
+
+USES
+----
+Uses following gems/plugins:
+acts_as_list (position of sections on the page)
+acts_as_ordered (next/previous partially thru this plugin)
+mini_magick (info about photos)
+calendar_helper (calendar)
+globalize2 (localization)
+pake_browser_detect (detection of browser for ajax/non-ajax)
+paperclip (for ckeditor) 
+rails-ckeditor (formating of text in sections)
+authlogic (login to admin section)
+will_paginate (pagination of photos, comments and guestbook)
+
+INSTALLATION
+------------

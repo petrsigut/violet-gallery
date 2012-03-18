@@ -1,0 +1,47 @@
+<h1><%= t(:new_comment) %></h1>
+
+  <%# because it is remote_form_for we have to bind the validation to conditions... I did not find another solution %>
+  <% remote_form_for([@photo, @comment], :condition => "(Validation.validate('comment_name')) && Validation.validate('comment_msg') && Validation.validate('comment_spam')") do |f| %>
+  <%= f.error_messages %>  <% if flash[:notice] -%>
+    <div id="errorExplanation"><%= flash[:notice] %></div>
+  <% end -%>
+
+
+  <p>
+    <%= f.label :name, obligatory_field(t(:name)) %>
+    <span id="advice-required-comment_name" class="form_advice" style="display:none">
+    <%= t(:please_fill_this_field) %></span><br/>
+    <%= f.text_field :name, :class => "required" %>
+    </p>
+    <p>
+    <%= f.label :spam, obligatory_field(t(:am_i_spam_robot)) %><br/>
+    <%= select_tag "comment_spam", options_for_select([ t(:yes_spam), t(:yes2_spam), [t(:no_spam), "1"] ]),
+      :class => "validate-selection" %>
+    <span id="advice-validate-selection-comment_spam" class="form_advice" style="display:none">
+    <%= t(:please_change_to_no) %></span>
+
+  </p>
+
+  <p>
+    <%= f.label :msg, obligatory_field(t(:comment)) %>
+    <span id="advice-required-comment_msg" class="form_advice" style="display:none">
+    <%= t(:please_fill_this_field) %></span>
+    <%= f.text_area :msg, :rows => 4, :class => "required" %>
+    </p>
+  <p>
+    </p>
+    <p>
+    <%= submit_tag t(:send_comment), :id => "commit" %>
+    </p>
+    <p>
+     <strong><%=t :obligatory_fields %>*</strong>
+    </p>
+   <%# end  %>  
+
+
+ <% end %>
+ <script type="text/javascript">
+   // set to false because of next/prev navigation
+    new Validation('new_comment', {immediate:false});
+  </script>
+

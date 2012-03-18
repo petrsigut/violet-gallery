@@ -1,0 +1,10 @@
+<%= render :partial => 'menu' %>
+<h1><%=t :comments_to_approve %></h1>
+<%= will_paginate @comments %>
+
+<% unless @comments.empty? %>
+  <%= render(:partial => "comment_approve" , :collection => @comments, :as => :comment) %>
+<% end %>
+
+<br clear="all">
+<%= will_paginate @comments %>

@@ -1,0 +1,75 @@
+<script type="text/javascript">
+//CKEDITOR.config.contentsCss = '/stylesheets/common.css' ; 
+</script>
+
+<h1>Editovat sekci</h1>
+
+<% form_for([:admin, @section]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title, "Název" %><br />
+    <%= f.text_field :title %>
+    </p>
+      <p>
+      <%= f.check_box :builtin %> Fotografie ze sekce nezobrazovat na hlavní straně (pouze v sekci samotné)
+      </p>
+
+
+  <% if @section.virtual == false and @section.folder == false %>
+    <p>
+    <%=t :comments %>
+    <br/>
+      <%= f.radio_button :not_comment, "0", :checked => "checked" %>
+      <%= f.label :not_comment, t(:allow) %>
+      <br/>
+      <%= f.radio_button :not_comment, "2" %>
+      <%= f.label :not_comment, t(:approve) %>
+      <br/>
+      <%= f.radio_button :not_comment, "1" %>
+      <%= f.label :not_comment, t(:disable) %>
+    </p>
+    <p>
+      <%= f.label :text %><br />
+      <%= f.cktext_area :text %>
+      </p>
+    <% if (Setting.get_setting("can_change_photos_order") == "true") %>
+      <p>
+      Pořadí fotografií v sekci: <br/>
+      <%= f.select_tag "section[order]",
+        options_for_select([ ["normální - nejnovější první", "DESC"], ["obrácené - nejstarší první", "ASC"] ], :selected => @section.order) %>
+      </p>
+    <% end %>
+
+    <% elsif @section.virtual == true %>
+      <p>
+      Virtuální sekce směřující na <%= @section.virtual_url %>
+      </p>
+    <% end %>
+  <br/>
+  Nadřazená sekce:<br/>
+  <%= collection_select :section, :parent_id, @sections_superiors, :id, :title %>
+
+  <% if (Setting.get_setting("show_sections_published") == "true") and @section.virtual == false %>
+    <p>
+      Publikovat sekci: 
+      <%= f.check_box :published %>
+    </p>
+  <% end %>
+
+
+  <p>
+    <%= f.submit "Aktualizovat" %>
+  </p>
+<% end %>
+
+<hr>
+  <% if @section.virtual == false and @section.folder == false %>
+    V sekci je celkem <%= @section.photos.count %> fotografií, z toho nepublikovaných:
+    <%= @unpublished_photos %>
+    <% if (@unpublished_photos > 0) %>
+       - <%= link_to t(:publish_all), publish_admin_section_path(@section.id) %>
+    <% end %>
+       - <%= link_to t(:unpublish_all), unpublish_admin_section_path(@section.id) %>
+
+  <% end %>

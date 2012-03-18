@@ -1,0 +1,6 @@
+<%= will_paginate @photos %>
+
+<% for photo in @photos %>
+  <%= photo_thumb(photo,@section) %>
+<% end %>
+

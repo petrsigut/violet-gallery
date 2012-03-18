@@ -1,0 +1,28 @@
+<div id="column-1">
+  <h2><strong><%= t(:newest) %> </strong><%= t(:comments) %></h2>
+  <%= render(:partial => "comments/newest",
+             :collection => @comments_newest, :as => :comment) %>
+  <br clear="all">
+  <br clear="all">
+  <a href="/comments"><%= t(:show_all_comments) %></a>
+  </div>
+</div>
+  
+<div id="column-2">
+  <% if (@textbox_news.publish?) %>
+  <h2><%= @textbox_news.title %></h2>
+  <p>
+    <%= @textbox_news.text %>
+    </p>
+  <% end %>
+</div>
+
+<div id="column-3">
+  <% if (@textbox_like_my_photos.publish?) %>
+    <h2><%= @textbox_like_my_photos.title %></h2>
+    <p>
+    <%= @textbox_like_my_photos.text %>
+    </p>
+  <% end %>
+</div>
+

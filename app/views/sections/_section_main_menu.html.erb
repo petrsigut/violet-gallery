@@ -1,0 +1,15 @@
+<li class="<%= section.cssclass %>">
+<%- if section.folder == true -%>
+  <h3><%= section.title %></h3>
+<%- elsif (section.folder == false and section.virtual == false) -%>
+  <%= link_to section.title, section_path(section) -%>
+<%- elsif (section.virtual == true) -%>
+  <%= link_to section.title, section.virtual_url -%>
+<%- end -%>
+
+<% unless section.children.empty? %>
+  <ul><%= render :partial => 'sections/section_main_menu',
+    :collection => section.children, :as => :section -%></ul>
+<%- end -%>
+</li>
+

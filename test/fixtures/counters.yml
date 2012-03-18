@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  count: 1
+  late: 2010-02-18 10:15:38
+
+two:
+  count: 1
+  late: 2010-02-18 10:15:38

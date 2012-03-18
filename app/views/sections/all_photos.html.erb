@@ -1,0 +1,14 @@
+<%= render :partial => "sections_menu" %>
+
+<% content_for :paginate do %> 
+  <%= will_paginate @photos %>
+<% end %>
+
+<% for photo in @photos %>
+  <%= photo_thumb(photo,photo_path(photo, :page => params[:page])) %>
+<% end %>
+
+<br/>
+<% content_for :footer do %> 
+  <%= render(:partial => "layouts/footer") %>
+<% end %>

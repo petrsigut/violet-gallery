@@ -1,0 +1,27 @@
+<%= render(:partial => 'menu') %>
+<table border="1">
+  <th>kontakt</th><th>zisk</th><th>fotografie</th><th>zpět mezi nevyřízené</th>
+  <% for cart in @carts %>
+  <% email_body = "Jako přílohu e-mailu přiložte fotografie v plném rozlišení
+  pojmenované číselně takto:\n " %>
+
+    <tr>
+      <td><%= cart.address %><br/><%= cart.phone %><br/><%= cart.email %></td>
+  <td><%= cart.count_author_commission %></td>
+  <td>
+    <% for ordered_photo in cart.ordered_photos %>
+      <% photo = ordered_photo.photo %>
+      <%= photo_thumb(photo,section_photo_path(photo.section, photo)) %>
+      <% email_body += photo.id.to_s+".jpg ("+photo.title+" - "+ordered_photo.print_size.size+")\n" %>
+    <% end %>
+  </td>
+<td>
+  <%= button_to t(:back_to_orders),
+    {:action => :move_to_orders, :id => cart.id}, :confirm => t(:are_you_sure), :method => :post %>
+
+</td>
+
+</tr>
+<% end %>
+</table>
+

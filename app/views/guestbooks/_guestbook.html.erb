@@ -1,0 +1,9 @@
+  <div id=<%= "last_#{guestbook.id}" %>>
+    <p class="quote">
+    <strong><%=h guestbook_name_and_web(guestbook) %></strong>
+    <span class="date"><%= t(:before) %> <%=h time_ago_in_words(guestbook.created_at) %></span>
+      <br/>
+      <%= nl2br(h(guestbook.msg)) %>
+      <br/>
+      </p>
+   </div>

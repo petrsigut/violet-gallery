@@ -1,0 +1,15 @@
+<%= render :partial => "sections_menu" %>
+<h1><%= @section.title %></h1>
+
+<%= begin 
+   render :partial => @section.title.downcase rescue
+   render :partial => "show" 
+ end  %>
+
+<br/>
+
+<% if (!@section.builtin) %>
+  <% content_for :footer do %> 
+    <%= render(:partial => "layouts/footer") %>
+  <% end %>
+<% end %>

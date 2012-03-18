@@ -1,0 +1,9 @@
+<% content_for :paginate do %> 
+  <%= will_paginate @photos %>
+<% end %> 
+
+<%= @section.text %>
+<br clear="all">
+<% for photo in @photos %>
+  <%= photo_thumb(photo,section_photo_path(@section, photo, :page => params[:page])) %>
+<% end %>

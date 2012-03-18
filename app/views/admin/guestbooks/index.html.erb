@@ -1,0 +1,20 @@
+<h1><%=t :guest_book_heading %></h1>
+
+<%= will_paginate @guestbooks %>
+<% for guestbook in @guestbooks %>
+  <p class="quote">
+    <strong><%=h guestbook_name_and_web(guestbook) %></strong>
+    <span class="date"><%= t(:before) %> <%=h time_ago_in_words(guestbook.created_at) %></span>
+      <br/>
+      <%= nl2br(h(guestbook.msg)) %>
+      <br/>
+      <br/>
+      <%= image_tag 'admin/delete.png' %>
+      <%= link_to 'Smazat', [:admin, guestbook], :confirm => 'Jste si jistí?',
+        :method => :delete %>
+    </p>
+<% end %>
+
+<br />
+<%= will_paginate @guestbooks %>
+

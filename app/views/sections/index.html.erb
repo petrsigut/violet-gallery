@@ -1,0 +1,16 @@
+<% for section in @sections %>
+  <div class="imgteaser">
+    <a href="<%= section_path(section) %>">
+  <% photos = section.photos.limited(4) %>
+    <% photos.each_with_index do |photo, i| %>
+      <%= photo_thumb(photo) %>
+      <% if i == 1  %>
+        <br/>
+      <% end %>
+    <% end %>
+    <span class="desc">
+      <%= section.title  %>
+    </span>
+    </a>
+</div>
+<% end %>

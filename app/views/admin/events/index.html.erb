@@ -1,0 +1,20 @@
+<h1><%=t :calendar %></h1>
+
+<table>
+  <tr>
+    <th><%=t :date %></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%=h event.date %></td>
+    <td><%= link_to 'Zobrazit', [:admin, event] %></td>
+    <td><%= link_to 'Upravit', edit_admin_event_path(event) %></td>
+    <td><%= link_to 'Smazat', [:admin, event], :confirm => 'Jste si jistí?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t(:new_event), new_admin_event_path %>
